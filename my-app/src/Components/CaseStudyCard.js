@@ -1,4 +1,5 @@
 import React from "react";
+import Button from "./Buttons";
 
 const CaseStudyCard = ({ image, title, desc, reverse }) => {
   return (
@@ -21,9 +22,7 @@ const CaseStudyCard = ({ image, title, desc, reverse }) => {
         <h2 className="text-2xl font-semibold mb-4">{title}</h2>
         <p className="text-sm text-gray-600 leading-relaxed">{desc}</p>
 
-        <button className="mt-6 px-6 py-3 rounded-lg text-white bg-gradient-to-r from-primary to-secondary hover:scale-105 transition-transform">
-          View Case Study
-        </button>
+        <Button text={"View Case Study"}/>
       </div>
     </div>
   );

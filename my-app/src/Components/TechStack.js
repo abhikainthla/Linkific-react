@@ -10,44 +10,53 @@ import { TbBrandReactNative } from "react-icons/tb";
 import { SiExpo } from "react-icons/si";
 import { FcAndroidOs } from "react-icons/fc";
 import { CgFramer } from "react-icons/cg";
+import { motion, AnimatePresence } from "framer-motion";
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.08 } },
+};
 
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
+};
 
 const techStackData = [
   {
     id: 1,
     category: "Frontend",
     technologies: [
-      <FaReact style={{color:"#4fd4f0"}} />,
-      <RiNextjsLine style={{color:"#000000"}} />,
-      <IoLogoJavascript style={{color:"#f7df1d"}} />,
-      <SiTypescript style={{color:"#0079cc"}} />,
-      <RiTailwindCssFill style={{color:"#4a9fbb"}} />,
-      <FaHtml5 style={{color:"#e44d26"}} />,
-      <FaCss3Alt style={{color:"#284de6"}} />,
+      <FaReact style={{ color: "#4fd4f0" }} />,
+      <RiNextjsLine style={{ color: "#000000" }} />,
+      <IoLogoJavascript style={{ color: "#f7df1d" }} />,
+      <SiTypescript style={{ color: "#0079cc" }} />,
+      <RiTailwindCssFill style={{ color: "#4a9fbb" }} />,
+      <FaHtml5 style={{ color: "#e44d26" }} />,
+      <FaCss3Alt style={{ color: "#284de6" }} />,
     ],
   },
   {
     id: 2,
     category: "Backend",
     technologies: [
-      <FaNode style={{color:"#91c443"}} />,
+      <FaNode style={{ color: "#91c443" }} />,
       <SiExpress />,
-      <SiNestjs style={{color:"#df204b"}} />,
-      <SiMongodb style={{color:"#00ae42"}} />,
-      <BiLogoPostgresql style={{color:"#316192"}} />,
-      <IoLogoFirebase style={{color:"#ffcb2b"}} />,
+      <SiNestjs style={{ color: "#df204b" }} />,
+      <SiMongodb style={{ color: "#00ae42" }} />,
+      <BiLogoPostgresql style={{ color: "#316192" }} />,
+      <IoLogoFirebase style={{ color: "#ffcb2b" }} />,
     ],
   },
   {
     id: 3,
     category: "Mobile",
     technologies: [
-      <TbBrandReactNative style={{color:"#4fd4f0"}}  />,
+      <TbBrandReactNative style={{ color: "#4fd4f0" }} />,
       <SiExpo />,
       <FcAndroidOs />,
       <SiIos />,
-      <FaFlutter style={{color:"#56c1fd"}} />,
+      <FaFlutter style={{ color: "#56c1fd" }} />,
     ],
   },
   {
@@ -55,10 +64,10 @@ const techStackData = [
     category: "UI/UX",
     technologies: [
       <FaFigma />,
-      <SiAdobexd style={{color:"#470137"}} />,
-      <FaSketch/>,
-      <CgFramer style={{color:"#265cf8"}} />,
-      <SiCanva style={{color:"#00c4cc"}} />,
+      <SiAdobexd style={{ color: "#470137" }} />,
+      <FaSketch />,
+      <CgFramer style={{ color: "#265cf8" }} />,
+      <SiCanva style={{ color: "#00c4cc" }} />,
     ],
   },
   {
@@ -66,9 +75,9 @@ const techStackData = [
     category: "DevOps",
     technologies: [
       <SiVercel />,
-      <SiNetlify style={{color:"#05bdba"}} />,
+      <SiNetlify style={{ color: "#05bdba" }} />,
       <SiRender />,
-      <FaDocker style={{color:"#2397ee"}} />,
+      <FaDocker style={{ color: "#2397ee" }} />,
       <FaGithub />,
     ],
   },
@@ -76,10 +85,10 @@ const techStackData = [
     id: 6,
     category: "SEO",
     technologies: [
-      <SiGoogleanalytics style={{color:"#ffc313"}} />,
+      <SiGoogleanalytics style={{ color: "#ffc313" }} />,
       <SiGooglesearchconsole />,
-      <SiSemrush style={{color:"#ff5f2d"}} />,
-      <SiLighthouse/>,
+      <SiSemrush style={{ color: "#ff5f2d" }} />,
+      <SiLighthouse />,
     ],
   },
 ];
@@ -88,39 +97,57 @@ const TechStack = () => {
   const [activeCategory, setActiveCategory] = useState(techStackData[0]);
 
   return (
-    <div className="flex flex-col gap-10">
-      
+    <motion.div
+      className="flex flex-col gap-8 sm:gap-10 px-4 sm:px-6 md:px-0"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      variants={containerVariants}
+    >
       {/* CATEGORY BUTTONS */}
-      <div className="flex flex-wrap justify-center gap-4">
+      <div className="flex flex-wrap justify-center gap-2 sm:gap-4">
         {techStackData.map((item) => (
-          <button
+          <motion.button
             key={item.id}
             onClick={() => setActiveCategory(item)}
-            className={`px-5 py-2 rounded-full text-sm font-semibold transition-all
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className={`px-4 sm:px-5 py-2 sm:py-2.5 rounded-full text-sm sm:text-base font-semibold transition-all
               ${
                 activeCategory.id === item.id
                   ? "bg-gradient-to-r from-primary to-secondary text-white shadow-md"
                   : "bg-white text-gray-700 border hover:bg-gray-100"
-              }
-            `}
+              }`}
           >
             {item.category}
-          </button>
+          </motion.button>
         ))}
       </div>
 
       {/* TECHNOLOGIES */}
-      <div className="flex flex-wrap justify-center gap-3">
-        {activeCategory.technologies.map((tech, index) => (
-          <span
-            key={index}
-            className="px-4 py-2 bg-white rounded-full text-4xl shadow-sm border hover:shadow-md transition"
-          >
-            {tech}
-          </span>
-        ))}
-      </div>
-    </div>
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={activeCategory.id}
+          className="flex flex-wrap justify-center gap-3 sm:gap-4 mt-4"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          exit={{ opacity: 0 }}
+        >
+          {activeCategory.technologies.map((tech, index) => (
+            <motion.span
+              key={index}
+              variants={itemVariants}
+              whileHover={{ scale: 1.15, rotate: 3 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-3 sm:px-4 py-2 sm:py-3 bg-white rounded-full text-3xl sm:text-4xl shadow-sm border cursor-pointer"
+            >
+              {tech}
+            </motion.span>
+          ))}
+        </motion.div>
+      </AnimatePresence>
+    </motion.div>
   );
 };
 

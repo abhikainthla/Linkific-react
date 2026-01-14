@@ -41,27 +41,33 @@ const HomeCard = () => {
   ];
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
       {data.map((item, index) => (
         <div
           key={index}
-          className="flex border-2 p-6 gap-4 rounded-lg hover:shadow-md transition"
+          className="flex items-start gap-4 sm:gap-5
+                     border border-gray-200
+                     p-4 sm:p-6
+                     rounded-xl
+                     bg-white
+                     transition-all duration-300
+                     hover:shadow-lg hover:-translate-y-1"
         >
           {/* Image */}
-          <div className="w-10 h-auto flex-shrink-0">
+          <div className="w-10 sm:w-12 flex-shrink-0">
             <img
               src={item.image}
               alt={item.title}
-              className="w-full h-full object-contain"
+              className="w-full h-auto object-contain"
             />
           </div>
 
           {/* Content */}
           <div>
-            <h2 className="font-bold text-xl mb-2">
+            <h2 className="font-semibold text-lg sm:text-xl mb-1 sm:mb-2">
               {item.title}
             </h2>
-            <p className="text-sm text-gray-600">
+            <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
               {item.desc}
             </p>
           </div>

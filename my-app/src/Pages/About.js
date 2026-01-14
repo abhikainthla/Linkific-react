@@ -1,108 +1,175 @@
 import { GrUserExpert } from "react-icons/gr";
 import { HiOutlineLightBulb } from "react-icons/hi";
+import { motion } from "framer-motion";
+import Button from "../Components/Buttons";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, ease: "easeOut" },
+  },
+};
+
+const stagger = {
+  hidden: {},
+  visible: {
+    transition: { staggerChildren: 0.2 },
+  },
+};
 
 const About = () => {
   return (
-     <section className="px-6 py-16 max-w-6xl mx-auto">
+    <section className="px-4 sm:px-6 py-14 sm:py-20 mt-5 max-w-6xl mx-auto">
+      
       {/* Heading */}
-      <div className="text-center mb-20">
-        <div className="flex flex-col items-center mb-12">
-          <div className="w-10 h-1 rounded-xl bg-gradient-to-r from-primary to-secondary mb-4" />
-          <h2 className="text-2xl md:text-4xl font-semibold text-center">
-            About {" "} <span className="bg-gradient-to-b from-primary to-secondary bg-clip-text text-transparent font-bold">
-            Us
-          </span>
+      <motion.div
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="text-center mb-14 sm:mb-20"
+      >
+        <div className="flex flex-col items-center gap-4">
+          <div className="w-10 h-1 rounded-xl bg-gradient-to-r from-primary to-secondary" />
+          
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold">
+            About{" "}
+            <span className="bg-gradient-to-b from-primary to-secondary bg-clip-text text-transparent font-bold">
+              Us
+            </span>
           </h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
+
+          <p className="text-gray-600 text-sm sm:text-base leading-relaxed max-w-2xl">
             Our company specializes in creating high-quality web applications
-            that help businesses establish a strong online presence. We believe
-            in clean design, performance, and usability.
+            that help businesses establish a strong online presence.
           </p>
         </div>
+      </motion.div>
 
-      </div>
-
-      {/* Content Section */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-        {/* Text */}
-        <div>
-          <h2 className="text-2xl font-semibold text-gray-800 mb-4">
+      {/* Who We Are */}
+      <motion.div
+        variants={stagger}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center"
+      >
+        <motion.div variants={fadeUp}>
+          <h2 className="text-xl sm:text-2xl font-semibold mb-4">
             Who We Are
           </h2>
-          <p className="text-gray-600 leading-relaxed mb-4">
-            Our company specializes in creating high-quality web applications
-            that help businesses establish a strong online presence. We believe
-            in clean design, performance, and usability.
+          <p className="text-gray-600 text-sm sm:text-base leading-relaxed mb-3">
+            We build high-quality web applications focused on clean design,
+            performance, and usability.
           </p>
-          <p className="text-gray-600 leading-relaxed">
-            Whether it's a startup or an established organization, we work
-            closely with our clients to understand their goals and deliver
-            solutions that create real impact.
+          <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
+            From startups to enterprises, we deliver solutions that create
+            real business impact.
           </p>
-        </div>
+        </motion.div>
 
-        {/* Image Placeholder */}
-        <div className="w-full h-64 bg-gray-200 rounded-lg flex items-center justify-center">
-          <img src='web-team.png' />
-        </div>
-      </div>
+        <motion.div
+          variants={fadeUp}
+          className="w-full h-52 sm:h-64 rounded-xl overflow-hidden"
+        >
+          <img
+            src="web-team.png"
+            alt="Team"
+            className="w-full h-full object-cover"
+          />
+        </motion.div>
+      </motion.div>
 
       {/* Mission & Vision */}
-      <div className="mt-16 mb-14 grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div className="bg-white shadow-md p-6 rounded-lg">
-          <h3 className="text-xl font-semibold mb-3">
-            Our Mission
-          </h3>
-          <p className="text-gray-600">
-            To build reliable and visually appealing web solutions that
-            empower businesses and improve user experiences.
+      <motion.div
+        variants={stagger}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="mt-14 sm:mt-20 grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8"
+      >
+        {[ 
+          { title: "Our Mission", desc: "To build reliable and visually appealing web solutions that empower businesses." },
+          { title: "Our Vision", desc: "To become a trusted digital partner delivering future-ready products." }
+        ].map((item, index) => (
+          <motion.div
+            key={index}
+            variants={fadeUp}
+            className="bg-white shadow-md p-6 rounded-xl"
+          >
+            <h3 className="text-lg sm:text-xl font-semibold mb-2">
+              {item.title}
+            </h3>
+            <p className="text-gray-600 text-sm sm:text-base">
+              {item.desc}
+            </p>
+          </motion.div>
+        ))}
+      </motion.div>
+
+      {/* Stats */}
+      <motion.div
+        variants={fadeUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="mt-16 border-t pt-10 flex flex-col sm:flex-row flex-wrap justify-center gap-10 text-center"
+      >
+        {/* Experience */}
+        <div>
+          <div className="flex justify-center items-end">
+            <h1 className="text-5xl sm:text-7xl font-bold bg-gradient-to-b from-primary to-secondary bg-clip-text text-transparent">
+              05
+            </h1>
+            <span className="text-3xl sm:text-5xl bg-gradient-to-b from-primary to-secondary bg-clip-text text-transparent">
+              +
+            </span>
+          </div>
+          <p className="text-sm sm:text-base mt-1">Years Of Experience</p>
+        </div>
+
+        {/* Expert Team */}
+        <div className="max-w-xs mx-auto">
+          <GrUserExpert className="text-3xl sm:text-4xl mx-auto mb-2" />
+          <p className="text-lg sm:text-xl font-semibold">Expert Team</p>
+          <p className="text-sm text-gray-600">
+            A team of skilled professionals delivering excellence.
           </p>
         </div>
 
-        <div className="bg-white shadow-md p-6 rounded-lg">
-          <h3 className="text-xl font-semibold mb-3">
-            Our Vision
-          </h3>
-          <p className="text-gray-600">
-            To become a trusted digital partner by delivering innovative,
-            scalable, and future-ready web products.
+        {/* Creative Solutions */}
+        <div className="max-w-xs mx-auto">
+          <HiOutlineLightBulb className="text-3xl sm:text-4xl mx-auto mb-2" />
+          <p className="text-lg sm:text-xl font-semibold">Creative Solutions</p>
+          <p className="text-sm text-gray-600">
+            Unique ideas with strong brand strategy and design.
           </p>
         </div>
-      </div>
+      </motion.div>
 
-      <hr/>
-      <div className="flex align-center justify-center">
-        <div className='border-r-2 divide-solid border-[#e5e7eb] p-6 '>
-          <div className='flex'>
-            <h1 className='text-8xl bg-gradient-to-b from-primary to-secondary bg-clip-text text-transparent'>05</h1> <span className='text-6xl text-bold bg-gradient-to-b from-primary to-secondary bg-clip-text text-transparent'>+</span>
-          </div> 
-          <p>Years Of Experiences</p>
+      {/* CTA */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="flex justify-center mt-16 sm:mt-24"
+      >
+        <div className="bg-gray-100 rounded-2xl p-8 sm:p-14 text-center max-w-4xl">
+          <h3 className="text-xl sm:text-3xl font-semibold mb-4">
+            We strive to offer reliable services and smart IT solutions
+          </h3>
+          <p className="text-sm sm:text-base text-gray-600 mb-6">
+            We combine creativity with innovation to turn your ideas into
+            powerful digital experiences.
+          </p>
+          <Button text={"Connect with us!"}/>
         </div>
-        <div className="p-6 ">
-          <GrUserExpert className="text-4xl mb-2" />
-          <p className="text-bold text-2xl">Experiences & Experties</p>
-          <p className="text-sm">Over the years we have gathered the team <br/> of professionals united.</p>
-        </div>
-        <div className="p-6 ">
-          <HiOutlineLightBulb className="text-4xl mb-2" />
-                    <p className="text-bold text-2xl">Creative Solutions</p>
-          <p className="text-sm">We create a strong brand stratergy and a <br/> unique visual identy.</p>
-        </div>
-      </div>
-
-      <div className='flex flex-col items-center text-center mt-20  mb-12'>
-      <div className="bg-gray-100 rounded-2xl p-10 md:p-16">
-        <h3 className="mt-4 text-3xl font-semi-bold text-[#000000] max-w-4xl mx-auto">
-          We strive to offer reliable services and smart IT soltions
-        </h3>
-        <p className=" text-sm text-gray-600 leading-relaxed mb-4">Having commitment and dedication towards your dream we put effort and include quality.<br/> No matter what your objective behind your ideas we make sure that we built creativity with your innovative ideas.</p>
-            <button className="px-8 py-4 rounded-lg text-white bg-gradient-to-r from-primary to-secondary hover:scale-105 transition-transform duration-300">
-              Connect with us!
-            </button>
-      </div>
-      </div>
+      </motion.div>
     </section>
   );
-}
+};
 
-export default About
+export default About;
