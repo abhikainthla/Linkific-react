@@ -18,9 +18,12 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         
         {/* Logo */}
-        <h1 className="text-2xl font-extrabold text-gray-900 tracking-wide">
+        <NavLink to={"/"}>
+          <h1 className="text-2xl font-extrabold text-gray-900 tracking-wide">
           My<span className="text-indigo-600">Company</span>
         </h1>
+        </NavLink>
+       
 
         {/* Desktop Links */}
         <div className="hidden md:flex items-center space-x-8 text-sm font-medium">

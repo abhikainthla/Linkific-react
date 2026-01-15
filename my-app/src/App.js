@@ -6,11 +6,13 @@ import Portfolio from "./Pages/Portfolio";
 import Contact from "./Pages/Contact";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
+import ScrollToTop from "./util/ScrollToTop";
 
 
 function App() {
   return (
     <>
+    <ScrollToTop/>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />

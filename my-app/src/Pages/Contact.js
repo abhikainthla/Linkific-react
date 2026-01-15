@@ -32,7 +32,7 @@ const fadeRight = {
 const Contact = () => {
   return (
     <motion.section
-      className="relative px-4 sm:px-6 py-16 sm:py-24 max-w-7xl mx-auto"
+      className="relative px-4 sm:px-6 py-16 sm:py-24 mt-5 max-w-7xl mx-auto"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}

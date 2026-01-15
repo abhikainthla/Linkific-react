@@ -4,6 +4,31 @@ import HomeCard from "../Components/HomeCard";
 import HomeGrid from "../Components/HomeGrid";
 import { motion } from "framer-motion";
 
+const text = [
+  { word: "Great", gradient: false },
+  { word: "Product", gradient: true },
+  { word: "is", gradient: false, lineBreak: true },
+  { word: "built", gradient: false },
+  { word: "by", gradient: false },
+  { word: "great", gradient: false, lineBreak: true },
+  { word: "teams", gradient: true },
+];
+
+const container = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.08,
+    },
+  },
+};
+
+const letter = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1 },
+};
+
+
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
   visible: {
@@ -48,18 +73,36 @@ const Home = () => {
           animate="visible"
           className="text-center md:text-left"
         >
-          <h1 className="text-4xl md:text-5xl font-semibold leading-tight">
-            Great{" "}
-            <span className="font-bold bg-gradient-to-b from-primary to-secondary bg-clip-text text-transparent">
-              Product
-            </span>{" "}
-            is <br />
-            built by great{" "}
-            <span className="font-bold bg-gradient-to-b from-primary to-secondary bg-clip-text text-transparent">
-              teams
-            </span>
-          </h1>
-
+           <motion.h1
+      variants={container}
+      initial="hidden"
+      animate="visible"
+      className="text-4xl md:text-5xl font-semibold leading-tight "
+    >
+      {text.map((item, i) => (
+        <span key={i} className="mr-2 w-20px">
+          {item.word.split("").map((char, j) => (
+            <motion.span
+              key={j}
+              variants={letter}
+              className={
+                item.gradient
+                  ? "font-bold bg-gradient-to-b from-primary to-secondary bg-clip-text text-transparent"
+                  : ""
+              }
+            >
+              {
+                char
+              }
+            </motion.span>
+            
+          ))}
+          <span>&nbsp;</span>
+          {item.lineBreak && <br />}
+        </span>
+      ))}
+      <br />
+    </motion.h1>
           <p className="mt-6 text-gray-600 max-w-lg mx-auto md:mx-0">
             We help build and manage a team of world-class developers to bring
             your vision to life.

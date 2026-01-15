@@ -62,17 +62,20 @@ const Portfolio = () => {
       {
         image:"Case-study__image.png",
         title:"Website Design for SCFC Canada",
-        desc:"Born out of a vision, a single-minded objective that puts service before anything else, Swift Clearance and Forwarding Corp. surging forth to deliver the best services in the shipping and logistics scenario. Its meteoric rise stems out of a solid foundation. The management boasts of over 20 years of rich and varied experience in the shipping and freight forwarding industry."
+        desc:"Born out of a vision, a single-minded objective that puts service before anything else, Swift Clearance and Forwarding Corp. surging forth to deliver the best services in the shipping and logistics scenario. Its meteoric rise stems out of a solid foundation. The management boasts of over 20 years of rich and varied experience in the shipping and freight forwarding industry.",
+        bg: "bg-[#f1f2ff]"
       },
       {
         image:"Case-study__image (1).png",
         title:"Website Design for SCFC Canada",
-        desc:"Born out of a vision, a single-minded objective that puts service before anything else, Swift Clearance and Forwarding Corp. surging forth to deliver the best services in the shipping and logistics scenario. Its meteoric rise stems out of a solid foundation. The management boasts of over 20 years of rich and varied experience in the shipping and freight forwarding industry."
+        desc:"Born out of a vision, a single-minded objective that puts service before anything else, Swift Clearance and Forwarding Corp. surging forth to deliver the best services in the shipping and logistics scenario. Its meteoric rise stems out of a solid foundation. The management boasts of over 20 years of rich and varied experience in the shipping and freight forwarding industry.",
+        bg: "bg-[#f0fff7]"
       },
       {
         image:"Case-study__image (2).png",
         title:"Website Design for SCFC Canada",
-        desc:"Born out of a vision, a single-minded objective that puts service before anything else, Swift Clearance and Forwarding Corp. surging forth to deliver the best services in the shipping and logistics scenario. Its meteoric rise stems out of a solid foundation. The management boasts of over 20 years of rich and varied experience in the shipping and freight forwarding industry."
+        desc:"Born out of a vision, a single-minded objective that puts service before anything else, Swift Clearance and Forwarding Corp. surging forth to deliver the best services in the shipping and logistics scenario. Its meteoric rise stems out of a solid foundation. The management boasts of over 20 years of rich and varied experience in the shipping and freight forwarding industry.",
+        bg: "bg-[#fff4f4]"
       },
     ]
 
@@ -221,6 +224,7 @@ const Portfolio = () => {
       image={item.image}
       title={item.title}
       desc={item.desc}
+      bgColor={item.bg}
       reverse={index % 2 !== 0} 
     />
   ))}

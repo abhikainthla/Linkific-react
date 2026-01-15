@@ -120,7 +120,7 @@ const About = () => {
         {/* Experience */}
         <div>
           <div className="flex justify-center items-end">
-            <h1 className="text-5xl sm:text-7xl font-bold bg-gradient-to-b from-primary to-secondary bg-clip-text text-transparent">
+            <h1 className="text-5xl sm:text-7xl font-semibold bg-gradient-to-b from-primary to-secondary bg-clip-text text-transparent">
               05
             </h1>
             <span className="text-3xl sm:text-5xl bg-gradient-to-b from-primary to-secondary bg-clip-text text-transparent">
