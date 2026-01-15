@@ -38,10 +38,16 @@ The application focuses on delivering a responsive, user-friendly interface with
 ## 📸 Screenshots
 
 ### Home Page
-![Home Page](./screenshots/home.png)
+<img width="1920" height="1080" alt="Image" src="https://github.com/user-attachments/assets/60bdfb3d-5c13-4737-bed5-2a92c74df255" />
 
-### Dashboard
-![Dashboard](./screenshots/dashboard.png)
+### About
+
+
+### Services
+
+### Portfolio
+
+### Contact
 
 
 ---
